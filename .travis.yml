@@ -13,3 +13,10 @@ jobs:
     - ng build
 notifications:
   email: false
+  deploy:
+  provider: heroku
+  api_key:
+    secure: UgAwDorPHr8YewfcH5eJm8ntV5e1kpGuxQWWL7DUxmEXFALFkjrtLxGucamib2EJyF6W/FD4mD0ZuyicWuAv4cE3ndoH7VXQZme0jsSDT7uRiciHrWZCVDTNkspwv2myNW2mxo9d0QdnGKxBQS9vjM2UHbseT0gIpsW1Hl4BTEkLnu+Zl6ydXOpQe5FFbne0Ge5X9I7RVDqYtVlxK8ZAMNNOimoz/4OE2yzaCPZa4PPA5BROA6xhDEGkSrEtkBMwSjloB0dywe+C5szNkic/cPg86NtxzXOHQ8/nAqNmAFFSims5An7C94WPnZn3tG1dEVpibeU0n8WH/n3TD0hr2x6LmkGTlHdntZcAYHgMX6O+z8j9Yq4zhqR5W8KdlsIXch7Tck0Kmw4NjQuy6KBWhqaNw4oPVrunGNHf6w64ZZJKmebJ3ARZGf5QjEYtwhXRDBBKnczeuqaUha38Q+3qg8b1L6j8/meONjNYNIWjnlCgC+dnlynO2B9/7Q/1DAUibvYdM2SpVsQLvAxEReDhNOFy5e+4ImFZiXfgYBVWQAQC9O9V6A4bBs/vEvzBeRIQY9l/VU37Hbh2qPNNRxyvI2l+yTCS69pWugVDiFW+PH6S4gkAi3WxcQLWYZlgB/AxdfaYkqUamf89M1iPsBFaXnuH2agJVn6xLkoj8jROi3s=
+  app: spark-backend-elte
+  on:
+    repo: arongyalai/spark-backend
