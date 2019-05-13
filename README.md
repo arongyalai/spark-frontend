@@ -1,0 +1,6 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/39c03246220e4c1f8296be3c555c4db3)](https://www.codacy.com/app/gabeeedev/spark?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gabeeedev/spark&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.com/gabeeedev/spark.svg?branch=master)](https://travis-ci.com/gabeeedev/spark)
+[![Maintainability](https://api.codeclimate.com/v1/badges/015a05a3ae512fca58cc/maintainability)](https://codeclimate.com/github/gabeeedev/spark/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/015a05a3ae512fca58cc/test_coverage)](https://codeclimate.com/github/gabeeedev/spark/test_coverage)
+# Spark (WIP)
+To-do: [link](https://github.com/gabeeedev/spark/projects/1)

@@ -1,0 +1,50 @@
+sudo: required
+jobs:
+  include:
+  - stage: backend
+    name: backend tests
+    language: java
+    jdk: oraclejdk8
+    before_script:
+    - cd backend
+    script:
+    - "./mvnw clean test -B"
+  - stage: backend
+    name: backend test and build
+    language: java
+    jdk: oraclejdk8
+    env:
+      global:
+      - CC_TEST_REPORTER_ID=97887b04250b6f41da87ce276c49e3545783613103b718340452f95964c29f92
+    before_script:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+      > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - "./cc-test-reporter before-build"
+    - cd backend
+    script:
+    - "./mvnw clean install -B"
+    after_script:
+    - cd ..
+    - "./cc-test-reporter format-coverage -d -t jacoco ./backend/target/jacoco-ut/jacoco.xml"
+    - "./cc-test-reporter upload-coverage -d -r 97887b04250b6f41da87ce276c49e3545783613103b718340452f95964c29f92"
+  - stage: frontend
+    name: frontend build
+    language: node_js
+    node_js:
+    - 10.15.3
+    before_script:
+    - cd frondend/spark
+    - npm install -g @angular/cli
+    - npm install --save-dev @angular-devkit/build-angular
+    script:
+    - ng build
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: L8I0J/WdyOVpmx12SFcWl5yffoNi1TC/6X47rBB2fC2Kp0jUbG0h1T1sDvppqB8Nm3K24+XM06tyThQBzg4X12RXzWgxQpPALMSWF06N0ye3VPHqYhEssBEpln15oogJn4UvE4/r/fLq+ukA4R6nHeapLXpEw5LwK7jKvtylCcH6KDKAPkoZIvG6PpwR+S6KVDDM6KFkcOoCogZ0E1uxsQrzpAZV63ClrPMetaFM6R4IK++z+MiEGWra5YnwyijspspslymVYIx2C3nOfWvHr/0exKp28CP0LBKW2Rr2y9odWrcL4WKXcbfYu5cgYZk/Oi+pVqaBO6R36KfXPc2qvMU8h/rD2eRAfRGk94mtac2D2coNelI8Rj6m2Fs/BkRS/2yarHCxogJoOG+x79RKFD0KPpcfPIeXJYTo8c0FeWeHyUc13aD538lwRcfuuZ2mODDROOYvZGe3dPp0p5a3o70hgjSh1mtOZApvAk4tgROqLnZZag61tEqYTC0YKjauF2aPTiSShRMguCBVBQU0gVEWTOkO9GgS6ydTVKgQCMcw12o/X8dp0zl/rx+3KhzkAzfmATxptB3UzcngTQ7sZy71xubmVxIxdBtkFsLeW92vvVQbOAlB2m6l/WTatZ2chaaHKB46d4j+6b0rm6WgivREdtl4KJpX+vUZ1vP0GvE=
+  app: elte-spark
+  on:
+    repo: gabeeedev/spark
